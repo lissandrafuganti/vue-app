@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
-import { Model } from 'vue-api-query'
+// import { Model } from 'vue-api-query'
 import router from './router'
 import VueResource from 'vue-resource'
-Model.$http = axios
+// Model.$http = axios
+Vue.prototype.$axios = axios
 Vue.use(VueResource)
 // Define a base da URL das requisições AJAX será
 // a constante API que configuramos
@@ -29,20 +30,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-// Routes
-const routes = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
-  {
-    path: '/signup',
-    component: SignUp,
-    meta: {auth: true}
-  },
-  {
-    path: '/login',
-    component: Login,
-    meta: {auth: false}
-  }
-]
